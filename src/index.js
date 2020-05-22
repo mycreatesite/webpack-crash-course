@@ -1,8 +1,5 @@
 import _ from 'lodash';
-import cat from './utilities';
-
-
-console.log(cat.say());
+import './style.css';
 
 function component() {
 	const element = document.createElement('div');
@@ -12,3 +9,4 @@ function component() {
 }
 
 document.body.appendChild(component());
+document.body.classList.add('haikei');
