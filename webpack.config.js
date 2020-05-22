@@ -1,6 +1,5 @@
 const path = require('path');
-
-const outputPath = path.resolve(__dirname, 'dist')
+const outputPath = path.resolve(__dirname, 'dist');
 
 module.exports = {
 	//バンドルするファイル（エントリーポイント）
@@ -9,6 +8,18 @@ module.exports = {
 	output: {
 		filename: 'main.js',
 		path: outputPath
+	},
+	//ローダー登録
+	module: {
+		rules: [
+			{
+				test: /\.css$/,
+				use: [//ローダーは逆順に実行される
+					'style-loader',
+					'css-loader'
+				]
+			}
+		]
 	},
 	//デフォルトで開く仮想サーバーのディレクトリ
 	devServer: {
