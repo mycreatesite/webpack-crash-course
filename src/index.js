@@ -1,4 +1,8 @@
 import _ from 'lodash';
+import cat from './utilities';
+
+
+console.log(cat.say());
 
 function component() {
 	const element = document.createElement('div');
