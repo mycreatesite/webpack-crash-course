@@ -20,6 +20,14 @@ module.exports = {
 				]
 			},
 			{
+				test: /\.scss$/,
+				use: [//ローダーは逆順に実行される
+					'style-loader',
+					'css-loader',
+					'sass-loader'
+				]
+			},
+			{
 				test: /\.(jpe?g|png|gif|svg|ico)$/i,
 				loader: 'url-loader',
 				options: {
