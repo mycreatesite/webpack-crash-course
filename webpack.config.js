@@ -1,4 +1,6 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const outputPath = path.resolve(__dirname, 'dist');
 
 module.exports = {
@@ -12,6 +14,11 @@ module.exports = {
 	//ローダー登録
 	module: {
 		rules: [
+			{
+				test: /\.jsx?$/,
+				exclude: /node_modules/,
+				loader: "babel-loader"
+			},
 			{
 				test: /\.css$/,
 				use: [//ローダーは逆順に実行される
@@ -35,11 +42,22 @@ module.exports = {
 					limit: 500,
 					name: './images/[name].[ext]'
 				}
+			},
+			{
+				test: /\.html/,
+				loader: 'html-loader',
 			}
 		]
 	},
 	//デフォルトで開く仮想サーバーのディレクトリ
 	devServer: {
 		contentBase: outputPath
-	}
+	},
+	//プラグイン設定
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: './src/index.html',
+			filename: './index.html'
+		})
+	]
 }
